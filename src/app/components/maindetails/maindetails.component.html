@@ -1,0 +1,31 @@
+<app-loading *ngIf="isLoading"></app-loading>
+<div class="center" *ngIf="entregaForm.venda > 0">
+    <h2 style="font-weight: 500;">Pedido - {{entregaForm.venda}}</h2>
+    <div class="card_entrega" *ngFor="let entrega of allEntrega" [ngClass]="'card_entrega_' + entrega.id">
+        <h3>Entrega</h3>
+        <button class="btn" mat-list-item [disabled]="disable" (click)="atualizarRatreio(entrega.id.toString())">
+          <i class="material-icons sb_icon">{{ mostrarRatreio[convertToIndex(entrega)] ? 'expand_less' : 'expand_more' }}</i>
+        </button>
+        <h3>Previsão - {{addOneDay(entrega.previsao) }}</h3>
+        <div class="rota" *ngIf="mostrarRatreio[getEntregaIdAsString(entrega)]">
+            <ng-container *ngFor="let evento of allEvento">
+                <div class="tipo" *ngIf="shouldDisplayEvento(evento)">
+                    <div class="circle">
+                        <div class="circle_icon">
+                            <i class="material-icons sb_icon">{{ getEventoIcon(evento.tipo) }}</i>
+                        </div>
+                    </div>
+                    <h4>{{addOneDay(evento.data)}} {{ evento.hora }}</h4>
+                    <h3>{{ getEventoLabel(evento.tipo) }}</h3>
+                </div>
+                <div class="separador" *ngIf="isSeparadorVisible(evento.tipo)"></div>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<div class="center" *ngIf="entregaForm.venda == 0 && isLoading == false">
+    <h2>Código de rastreio não encontrado, entre em contato com a empresa para mais informações!</h2>
+    <h3>Retorne a tela de rastreio para informar o seu código.</h3>
+    <button mat-raised-button style="float: left;" (click)="retornar()" color="primary">Retornar</button>
+</div>

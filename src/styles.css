@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #f5f0f0;
+}
+
+.center {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 2%;
+    padding-right: 2% !important;
+    position: relative;
+    height: 100%;
+}
+
+.rast {
+    width: 90%;
+    max-width: 400px;
+    height: 200px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+    border: 1px solid gray;
+    background-color: #fff;
+    padding: 15px 15px;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.clear {
+    clear: both;
+}

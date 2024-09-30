@@ -1,0 +1,11 @@
+<div class="center">
+    <div class="rast mat-elevation-z4">
+        <app-loading *ngIf="isLoading"></app-loading>
+        <h1>Rastreamento</h1>
+        <mat-form-field appearance="outline" class="custom-form-field">
+            <mat-label>Informe o código de rastreio</mat-label>
+            <input [(ngModel)]="token" matInput>
+        </mat-form-field>
+        <button mat-raised-button style="float: right;" (click)="rastrear()" color="primary">Rastrear</button>
+    </div>
+</div>
